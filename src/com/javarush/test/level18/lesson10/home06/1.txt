@@ -1,0 +1,107 @@
+1 ert ert 12 5
+2 sdf 2 5
+4 sdf sdf sdf 1.5 5
+
+ /* for(String line: lines){
+            Struk elem = new Struk();
+            String[] s = line.split(" ");
+
+            elem.setId(Integer.valueOf(s[0]));
+            Double d;
+            d = new Double(s[s.length - 2]);
+            elem.setPrice(d);
+            elem.setQuantity(Integer.valueOf(s[s.length-1]));
+            String prod="";
+            for (int i = 1; i < s.length - 2; i++)
+            {
+                if (i < s.length-3)
+                {
+                    prod = prod + s[i] + " ";
+                }
+                else
+                    prod = prod + s[i];
+            }
+            elem.setOriductName(prod);
+            mass.add(elem);
+
+
+        }
+
+        int nom = Integer.parseInt(args[0]);
+        Struk elemVuvod = mass.get(nom-1);
+        System.out.println(elemVuvod.getId() + " " + elemVuvod.getOriductName() + " " + elemVuvod.getPrice() + " " + elemVuvod.getQuantity() );
+        */
+
+
+
+
+
+public static class Struk
+    {
+        Struk ()
+        {
+
+        }
+
+        public void setId(int id)
+        {
+            this.id = id;
+        }
+
+        public void setOriductName(String oriductName)
+        {
+            this.oriductName = oriductName;
+        }
+
+        public void setPrice(double price)
+        {
+            this.price = price;
+        }
+
+        public void setQuantity(int quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        public int getId()
+        {
+            return id;
+        }
+
+        public String getOriductName()
+        {
+            return oriductName;
+        }
+
+        public double getPrice()
+        {
+            return price;
+        }
+
+        public int getQuantity()
+        {
+            return quantity;
+        }
+
+        int id;
+        String oriductName;
+        double price;
+        int quantity;
+    }
+
+
+
+  BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String file1 = reader.readLine();
+
+        List<String> lines = Files.readAllLines(Paths.get(file1), StandardCharsets.UTF_8);
+        for (String line2: lines)
+        {
+            if (line2.startsWith(args[0] + " "))
+            {
+                System.out.println(line2);
+            }
+
+        }
+
+        reader.close();
