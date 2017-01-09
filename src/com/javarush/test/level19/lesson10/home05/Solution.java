@@ -16,20 +16,18 @@ public class Solution {
     public static void main(String[] args) throws IOException
     {
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String file = reader.readLine();
-        String fileOut = reader.readLine();
+
 
         ArrayList<String> lines = new ArrayList<String>();
-        BufferedReader reader1 = new BufferedReader(new FileReader(file));
+        BufferedReader reader1 = new BufferedReader(new FileReader(args[0]));
         while (reader1.ready())
         {
             lines.add(reader1.readLine());
         }
-        reader.close();
+
         reader1.close();
 
-        FileWriter writer = new FileWriter(fileOut);
+        FileWriter writer = new FileWriter(args[1]);
 
 
 

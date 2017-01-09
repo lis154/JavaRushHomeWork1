@@ -32,35 +32,30 @@ public class Solution {
     public static void main(String[] args) throws IOException, ParseException
     {
 
-        ArrayList<String> lines = new ArrayList<String>();
-        BufferedReader reader1 = new BufferedReader(new FileReader(args[0]));
-        while (reader1.ready())
-        {
-            lines.add(reader1.readLine());
-        }
+        String fileName = args[0];
+        String input;
+        ArrayList<String> fileList = new ArrayList<String>();
+        BufferedReader fileReader = new BufferedReader(new FileReader(fileName));
+        while ((input = fileReader.readLine()) != null)
+            fileList.add(input);
+        fileReader.close();
 
-        for (String line : lines)
+        for (String aFileList : fileList)
         {
-           String[] mas = line.split(" ");
-            int day, month, god;
+            String[] stringArray = aFileList.split(" ");
             String name = "";
-            god = Integer.parseInt(mas[mas.length-1]);
-            month = Integer.parseInt(mas[mas.length-2]);
-            day = Integer.parseInt(mas[mas.length-3]);
-            for (int i = 0; i < mas.length-3;i++)
-            {
-                if (i == mas.length-4)
-                {
-                    name = name + mas[i];
-                }
+            for (int i = 0; i < stringArray.length-3; i++) {
+                if (i == stringArray.length-4)
+                    name = name+stringArray[i];
                 else
-                name = name + mas[i] + " ";
+                    name = name+stringArray[i]+" ";
             }
-            Date docDate = new GregorianCalendar(god, month, day).getTime();
-            PEOPLE.add(new Person(name, docDate));
-
+            int year = Integer.parseInt(stringArray[stringArray.length-1]);
+            int month = Integer.parseInt(stringArray[stringArray.length-2])-1;
+            int day = Integer.parseInt(stringArray[stringArray.length-3]);
+            Date birthDay = new GregorianCalendar(year, month, day).getTime();
+            PEOPLE.add(new Person(name, birthDay));
         }
-        reader1.close();
 
 
 

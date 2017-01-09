@@ -16,6 +16,8 @@ it's a text for testing
 */
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class Solution {
     public static TestString testString = new TestString();
@@ -41,11 +43,31 @@ public class Solution {
         reader.close();
         writer.close();
 
+        File path = new File("C:\\Users\\i.lapshinov\\Downloads\\JavaRushHomeWork\\JavaRushHomeWork\\src\\com\\javarush\\test\\level19\\lesson08\\task05");
+        String[] list;
+        if(args.length == 0)
+            list = path.list();
+        else
+            list = path.list(new DirFilter(args[0]));
+        Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);
+        for(String dirItem : list)
+            System.out.println(dirItem);
+
     }
 
     public static class TestString {
         public void printSomething() {
             System.out.println("it's a text for testing");
+        }
+    }
+
+    public static class DirFilter implements FilenameFilter {
+        private Pattern pattern;
+        public DirFilter(String regex) {
+            pattern = Pattern.compile(regex);
+        }
+        public boolean accept(File dir, String name) {
+            return pattern.matcher(name).matches();
         }
     }
 }
